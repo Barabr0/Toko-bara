@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -26,6 +26,8 @@ class User extends Authenticatable
         'google_id',
         'phone',
         'address',
+        'google_id',
+        'avatar',
     ];
 
     /**
@@ -81,11 +83,36 @@ class User extends Authenticatable
                     ->where('product_id', $product->id)
                     ->exists();
     }
+        public function getAvatarUrlAttribute() : string {
+       if ($this->avatar && Storage::disk('public')->exists($this->avatar)) {
+        return asset('storage/' . $this->avatar);
+    }
 
+    if (str_starts_with($this->avatar ?? '', 'http')) {
+        return $this->avatar;
+    }
+
+    $hash = md5(strtolower(trim($this->email)));
+    return "https://www.gravatar.com/avatar/{$hash}?d=mp&s=200";
+}
+
+
+public function getInitialsAttribute(): string
+{
+    $words = explode(' ', $this->name);
+    $initials = '';
+
+    foreach ($words as $word) {
+        $initials .= strtoupper(substr($word, 0, 1));
+    }
+
+    return substr($initials, 0, 2);
+}
+            }
     /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
      */
 
-}
+

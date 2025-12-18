@@ -3,23 +3,54 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->command->info('🌱 Starting database seeding...');
+
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Administrator',
+            'email' => 'admin@example.com',
+            'role' => 'admin',
+            'email_verified_at' => now(),
         ]);
+        $this->command->info('✅ Admin user created: admin@example.com');
+
+
+        User::factory(10)->create(['role' => 'customer']);
+        $this->command->info('✅ 10 customer users created');
+
+
+        $this->call(CategorySeeder::class);
+
+
+        Product::factory(50)->create();
+        $this->command->info('✅ 50 products created');
+
+
+        Product::factory(8)->featured()->create();
+        $this->command->info('✅ 8 featured products created');
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@tokoonline.com',
+            'password' => Hash::make('password'),
+            'role' => 'admin',
+        ]);
+        User::create([
+                'name' => 'Customer',
+                'email' => 'customer@tokoonline.com',
+                'password' => Hash::make('password'),
+                'role' => 'customer',
+            ]);
+
+        $this->command->newLine();
+        $this->command->info('🎉 Database seeding completed!');
+        $this->command->info('📧 Admin login: admin@example.com / password');
     }
 }
