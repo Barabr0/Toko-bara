@@ -54,9 +54,9 @@
             </small>
         @endif
     </div>
-
+{{-- {{ route('cart.add') }} --}}
     <div class="card-footer bg-white border-0 pt-0">
-        <form action="{{ route('cart.add') }}" method="POST">
+        <form action="" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             <input type="hidden" name="quantity" value="1">

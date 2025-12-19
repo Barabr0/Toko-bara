@@ -8,7 +8,7 @@
 <div class="d-flex align-items-center gap-4">
 <div class="position-relative">
     <img id="avater-preview" class="rounded-circle object-fit-cover border"
-    style="width: 100px; height: 100px;"
+    style="width: 200px; height: 120px;"
     src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('images/default-avatar.png') }}"
      alt="{{ $user->name }}">
 
@@ -30,7 +30,7 @@
             </div>
 
             <div class="mt-3">
-                <button type="submit" class="btn btm-primary">Simpan Foto</button>
+                <button type="submit" class="btn btn-primary">Simpan Foto</button>
             </div>
 </form>
 <form id="delete-avatar-form" action="{{ route('profile.avatar.destroy') }}" method="post">

@@ -1,4 +1,3 @@
-import './bootstrap';
 import * as bootsrap from "bootstrap";
 window.bootsrap = bootsrap;
 
