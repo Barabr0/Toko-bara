@@ -21,7 +21,15 @@
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Dashboard</span>
+                <span >Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-home"></i>
+                </span>
+                <span >Home</span>
               </a>
             </li>
             </li>
@@ -30,7 +38,15 @@
               <span class="hide-menu">List</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="sfgd" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('admin.categories.index') }}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Category</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{ route('admin.products.index') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>

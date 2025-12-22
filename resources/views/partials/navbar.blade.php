@@ -48,28 +48,28 @@
             @auth
             {{-- Wishlist --}}
             <li class="nav-item">
-                {{-- <a class="nav-link position-relative" href="{{ route('wishlist.index') }}"> --}}
+                <a class="nav-link position-relative" href="{{ route('wishlist.index') }}">
                     <i class="bi bi-heart"></i>
-                    {{-- @if(auth()->user()->wishlists()->count() > 0)
+                    @if(auth()->user()->wishlists()->count() > 0)
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
                         {{ auth()->user()->wishlists()->count() }}
                     </span>
-                    @endif --}}
+                    @endif
                 </a>
             </li>
 
             {{-- Cart --}}
             <li class="nav-item">
-                {{-- <a class="nav-link position-relative" href="{{ route('cart.index') }}"> --}}
+                <a class="nav-link position-relative" href="{{ route('cart.index') }}">
                     <i class="bi bi-cart3"></i>
-                    {{-- @php
+                    @php
                                 $cartCount = auth()->user()->cart?->items()->count() ?? 0;
                                 @endphp
                             @if($cartCount > 0)
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" style="font-size: 0.6rem;">
                                 {{ $cartCount }}
                             </span>
-                            @endif --}}
+                            @endif
                         </a>
                     </li>
 
