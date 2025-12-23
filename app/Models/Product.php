@@ -79,10 +79,11 @@ class Product extends Model
     /**
      * Item pesanan yang mengandung produk ini.
      */
-   public function product()
-{
-    return $this->belongsTo(Product::class, 'produk_id');
-}
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
     // ==================== ACCESSORS ====================
 
     /**
@@ -203,4 +204,4 @@ class Product extends Model
     {
         return $query->whereBetween('price', [$min, $max]);
     }
-}
+}   

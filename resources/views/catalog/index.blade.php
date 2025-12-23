@@ -1,8 +1,3 @@
-{{-- ================================================
-     FILE: resources/views/catalog/index.blade.php
-     FUNGSI: Halaman katalog/daftar produk
-     ================================================ --}}
-
 @extends('layouts.app')
 
 @section('title', 'Katalog Produk')

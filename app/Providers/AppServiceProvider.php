@@ -1,23 +1,15 @@
 <?php
-
 namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider;
-
-// app/Providers/AppServiceProvider.php
 
 use App\Models\Product;
 use App\Observers\ProductObserver;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-    */
-    public function boot(): void
-    {
-        Product::observe(ProductObserver::class);
-    }
+     */
     public function register(): void
     {
         //
@@ -26,4 +18,9 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
+    public function boot(): void
+    {
+        Product::observe(ProductObserver::class);
+
+    }
 }

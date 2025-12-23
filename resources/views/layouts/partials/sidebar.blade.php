@@ -53,10 +53,7 @@
                 <span class="hide-menu">Product</span>
               </a>
             </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">AUTH</span>
-            </li>
+
           </ul>
         </nav>
         <!-- End Sidebar navigation -->

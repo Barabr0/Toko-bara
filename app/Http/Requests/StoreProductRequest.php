@@ -46,6 +46,20 @@ class StoreProductRequest extends FormRequest
             ],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => "nama harus di isi",
+            'category_id.required' => "nama harus di isi",
+            'price.required' => "nama harus di isi",
+            'discount_price.required' => "nama harus di isi",
+            'stock.required' => "nama harus di isi",
+            'weight.required' => "nama harus di isi",
+            'images.required' => "nama harus di isi",
+            'description.required' => "nama harus di isi",
+        ];
+    }
     protected function prepareForValidation(): void
     {
         $this->merge([

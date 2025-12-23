@@ -52,9 +52,10 @@ class User extends Authenticatable
         return $this->hasOne(Cart::class);
    }
    public function wishlists()
-    {
-        return $this->hasMany(Wishlist::class);
-   }
+{
+    return $this->belongsToMany(Product::class, 'wishlists')
+                ->withTimestamps();
+}
 
    public function orders()
     {
@@ -77,12 +78,10 @@ class User extends Authenticatable
         return $this->role === 'customer';
     }
 
-      public function hasInWishlist(Product $product): bool
-    {
-        return $this->wishlists()
-                    ->where('product_id', $product->id)
-                    ->exists();
-    }
+    public function hasInWishlist(Product $product)
+{
+    return $this->wishlists()->where('product_id', $product->id)->exists();
+}
         public function getAvatarUrlAttribute() : string {
        if ($this->avatar && Storage::disk('public')->exists($this->avatar)) {
         return asset('storage/' . $this->avatar);
