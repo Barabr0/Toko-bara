@@ -204,4 +204,4 @@ class Product extends Model
     {
         return $query->whereBetween('price', [$min, $max]);
     }
-}   
+}

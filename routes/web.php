@@ -54,7 +54,6 @@ Route::middleware(['auth', 'admin'])
     Route::resource('products', ProductController::class);
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])
     ->name('dashboard');
-    Route::resource('/products', ProductController::class);
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
