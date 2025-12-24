@@ -26,6 +26,18 @@ return new class extends Migration
             $table->decimal('price', 12, 2);
             $table->integer('quantity');
             $table->decimal('subtotal', 15, 2);
+              $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])->default('pending');
+
+                $table->enum('payment_status', ['unpaid', 'paid', 'failed'])->default('unpaid');
+
+                $table->string('shipping_name');
+                $table->string('shipping_address');
+                $table->string('shipping_phone');
+
+                $table->decimal('total_amount', 12, 2);
+                $table->decimal('shipping_cost', 12, 2)->default(0);
+
+                $table->string('snap_token')->nullable();
             $table->timestamps();
         });
     }

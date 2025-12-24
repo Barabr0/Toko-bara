@@ -26,6 +26,10 @@ return new class extends Migration
                       'delivered',
                       'canceled',
                       ])->defaukt('pending');
+                      $table->string('product_name');
+            $table->integer('quantity');
+            $table->decimal('price', 12, 2);
+            $table->decimal('subtotal', 12, 2);
             $table->string('shipping_name');
             $table->string('shipping_phone', 20);
             $table->text('shipping_address');
